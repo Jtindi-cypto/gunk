@@ -1,0 +1,30 @@
+{
+  "name": "cosetro-eth",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jacob Tindi",
+  "license": "ISC",
+  "dependencies": {
+    "git": "^0.1.3",
+    "update": "^0.4.2"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jtindi-cypto/web-UI-for-smart-contract.git"
+  },
+  "keywords": [
+    "UI",
+    "using",
+    "ethereum",
+    "web3.js"
+  ],
+  "bugs": {
+    "url": "https://github.com/jtindi-cypto/web-UI-for-smart-contract/issues"
+  },
+  "homepage": "https://github.com/jtindi-cypto/web-UI-for-smart-contract#readme",
+  "description": "web UI for smart contracts "
+}

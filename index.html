@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UFT-8">
+    <meta name ="viewport" content="width=device-width, intial scale=1.0">
+    <meta http-equiv="X-UA-Compatible"
+      content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <script src="./node_modules/web3/dist/web3.min.js"></script>
+
+</head>
+<body>
+      <div class ="container">
+      <h1>daap instructor </h1>
+
+      <h2>Instructor</h2>
+
+      <label for ="name" class="col-lg-2 control-label">Instructors Name</label>
+      <input ="name" type="text">
+
+      <label for ="name" class="col-lg-2 control-label">Instructors Age</label>
+      <input ="Age" type="text">
+
+      <button id="button">Update Instructor</button>
+
+      </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
+
+    <script>
+      if (typeof web3!=="undefined"){
+          web3=new Web3(web3.currentProvider);
+      }
+      else{
+          web3=new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+
+      }
+
+      web3.eth.defaultAccount=web3.eth.accounts[0];
+
+//set up abi 
+      var cosetroContract=web3.eth.contract([
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_fname",
+				"type": "string"
+			},
+			{
+				"name": "_age",
+				"type": "uint256"
+			}
+		],
+		"name": "setInstructor",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getInstructor",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	}
+])
+
+//setting up contract address
+ var cosetro = cosetroContract.at('0x1cfDF19e508416985CCfa63e369525ba696BD07C');
+ console.log(cosetro)
+
+ cosetro.getInstructor(function(error,result){
+     if(!error){
+         $("#instructor").html(result[0]+'('+result[1]+'years old');
+
+     } else
+     console.log(error);
+ });
+//jquery button function 
+$("#button").click(function(){
+    cosetro.getInstructor($("#name").val(),$("Age").val());
+});
+    </script>
+
+
+</body>
+</html>
